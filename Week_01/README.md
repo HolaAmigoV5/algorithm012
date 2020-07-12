@@ -3,7 +3,7 @@
 ## 知识点
 
 1. **精通一个领域的方法：** ① 知识点切碎 ② 碎片训练 ③ 反馈修正
-2. **刷题技巧：**：五遍刷题法
+2. **刷题技巧：**五遍刷题法
    * 第一遍：5-10分钟读题+思考，看最优解法，背诵和默写解法
    * 第二遍：自己写代码，LeetCode提交通过
    * 第三遍：24小时候，再写一遍
@@ -13,9 +13,9 @@
    * 一维：array, linked list, stack, queue, deque, set, map
    * 二维：tree, graph, binary search tree, heap, disjoint set, Trie
    * 特殊：Bitwise, BloomFilter, LRU Cache
-4. **算法：**跳转(branch)，循环(iteration)，递归(Recursion)，搜索(Search)，动态规划(Dynamic Programing)，二分查找(Binary Search)，贪心(Greedy)，数学(Math)
-5. **编程习惯：**自顶向下编程，快捷键的刻意训练
-6. **时间复杂度：**O(1), O(log n), O(n), O(n²), O(n³), O(2^N), O(n!)
+4. **算法：** 跳转(branch)，循环(iteration)，递归(Recursion)，搜索(Search)，动态规划(Dynamic Programing)，二分查找(Binary Search)，贪心(Greedy)，数学(Math)
+5. **编程习惯：** 自顶向下编程，快捷键的刻意训练
+6. **时间复杂度：** O(1), O(log n), O(n), O(n²), O(n³), O(2^N), O(n!)
    * 二分查找(Binary Search)：O(log n)
    * 二叉树遍历(Binary tree traversal)：O(n)，每个节点有且访问一次，故时间复杂度为O(n)
    * 最优排序矩阵查找(Optimal sorted matrix seach)：O(n)
@@ -41,4 +41,4 @@
 2. 刷题技巧：五毒神掌。五遍只是一个概数，对于我来说，我想5遍基本是不够的，需要更多遍数扎实基本功。
 3. 刷题所遇问题：① 过于追求LeetCode里的Runtime，死磕了不少时间。实际直接Copy别人代码运行，Runtime跟别人不一样；② 写完题后，习惯性的直接执行，经常出现单词拼写错误，“==”写成“=”等，还是需要写完养成检查一遍的习惯。
 4. Coding三步法：① 参数验证 ② 解题 ③ 检查
-5. **本周不足：**① 没来得刷老师讲的例题，后面找时间需要补上； ② 已刷的题目强化不足，同时还没来得及研习国际站的Discuss部分。
+5. **本周不足：** ① 没来得刷老师讲的例题，后面找时间需要补上； ② 已刷的题目强化不足，同时还没来得及研习国际站的Discuss部分。
