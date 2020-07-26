@@ -17,14 +17,14 @@ public class Solution {
         // return new string(schar)==new string(tchar);
 
         //M2 
-        int [] arr=new int[26];
-        for(int i=0; i<s.Length; i++){
-            arr[s[i]-'a']++;
-            arr[t[i]-'a']--;
-        }
-        return !arr.Any(item=>item!=0);
+        // int [] arr=new int[26];
+        // for(int i=0; i<s.Length; i++){
+        //     arr[s[i]-'a']++;
+        //     arr[t[i]-'a']--;
+        // }
+        // return !arr.Any(item=>item!=0);
 
-        //M2: use dictionary. the best
+        //M3: use dictionary. the best
         var dic=new Dictionary<char,int>();
         foreach(char sc in s)
         {
