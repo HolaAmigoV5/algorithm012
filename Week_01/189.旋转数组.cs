@@ -46,16 +46,16 @@
 public class Solution {
     public void Rotate(int[] nums, int k) {
         //M1:move 1 step, k times
-        int tem=0, pre=0;
-        k%=nums.Length;
-        for(int i=0;i<k;i++){
-            pre=nums[nums.Length-1];
-            for(int j=0;j<nums.Length;j++){
-                tem=nums[j];
-                nums[j]=pre;
-                pre=tem;
-            }
-        }
+        // int tem=0, pre=0;
+        // k%=nums.Length;
+        // for(int i=0;i<k;i++){
+        //     pre=nums[nums.Length-1];
+        //     for(int j=0;j<nums.Length;j++){
+        //         tem=nums[j];
+        //         nums[j]=pre;
+        //         pre=tem;
+        //     }
+        // }
 
         //M2：new Array
         /* int len=nums.Length;
@@ -68,7 +68,7 @@ public class Solution {
         } */
 
         //M3:loop Replace
-        /* int len=nums.Length;
+        int len=nums.Length;
         k=k%len;
         int count=0;
         for(int start=0; count<len;start++){
@@ -83,7 +83,7 @@ public class Solution {
                 current=next;
                 count++;
             } while (start!=current);
-        } */
+        } 
 
         //M4: Reverse
         // int len=nums.Length;
