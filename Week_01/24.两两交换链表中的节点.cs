@@ -24,18 +24,19 @@ public class Solution {
         // return next;
 
         //Iteration
-        ListNode pre=new ListNode(0);
-        pre.next=head;
-        ListNode temp=pre;
-        while(temp.next!=null && temp.next.next!=null){
-            ListNode start=temp.next;
-            ListNode end=temp.next.next;
-            temp.next=end;
-            start.next=end.next;
-            end.next=start;
-            temp=start;
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+        ListNode pre=dummy;
+        while(head!=null && head.next!=null){
+            var sec=head.next;
+            head.next=sec.next;
+            sec.next=head;
+            pre.next=sec;
+            
+            pre=head;
+            head=head.next;
         }
-        return pre.next;
+        return dummy.next;
     }
 }
 // @lc code=end

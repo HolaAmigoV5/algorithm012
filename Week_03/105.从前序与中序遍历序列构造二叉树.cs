@@ -15,32 +15,35 @@
  * }
  */
 public class Solution {
+    Dictionary<int, int> dic=null;
+    int[] the_preorder=null;
+    int[] the_inorder=null;
     public TreeNode BuildTree(int[] preorder, int[] inorder) {
+        
         //Recursion
-        var dic=new Dictionary<int, int>();
+        //prepare the data
+        the_inorder=inorder;
+        the_preorder=preorder;
+        dic=new Dictionary<int, int>();
         for(int i=0; i<inorder.Length; i++){
             dic[inorder[i]]=i;
         }
-        return BuildTreeHelper(preorder,0,preorder.Length,inorder,0,inorder.Length,dic);
+
+        return BuildTreeHelper(0,0,inorder.Length-1);
     }
 
-    private TreeNode BuildTreeHelper(int[] preorder, int p_start, int p_end, 
-    int[] inorder, int i_start, int i_end, Dictionary<int,int> dic){
-        //preorder为空，直接返回null
-        if(p_start==p_end)
+    private TreeNode BuildTreeHelper(int p_start,int i_start, int i_end){
+        if(p_start>the_preorder.Length-1 || i_start>i_end)
             return null;
-        int root_val=preorder[p_start];
-        TreeNode root=new TreeNode(root_val);
-        //在中序遍历中找到根节点的位置
-        int i_root_index=dic[root_val];
-        
-        int leftNum=i_root_index-i_start;
-        //递归构造左子树
-        root.left=BuildTreeHelper(preorder, p_start+1, p_start+leftNum+1, inorder, i_start,i_root_index,dic);
-        //递归构造右子树
-        root.right=BuildTreeHelper(preorder,p_start+leftNum+1, p_end,inorder,i_root_index+1,i_end,dic);
+        var root=new TreeNode(the_preorder[p_start]);
+        var root_index=dic[root.val];
+        var len=root_index-i_start;
+        root.left=BuildTreeHelper(p_start+1,i_start, root_index-1);
+        root.right=BuildTreeHelper(p_start+len+1, root_index+1, i_end);
         return root;
     }
+
+    
 }
 // @lc code=end
 
