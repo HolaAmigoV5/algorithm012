@@ -16,7 +16,7 @@
 
 - **状态转移方程（DP方程）** ：如下图的斐波那契数列，f(n)相当于`状态n`，这个n是由`状态n-1`和`状态n-2`相加转移而来，这就叫状态转移。
 
-![fib](C:\Users\Wby\Desktop\fib.png)
+![fib](https://github.com/HolaAmigoV5/Images/raw/master/fib.png)
 
 ​	
 
@@ -48,7 +48,7 @@ for 状态1 in 状态1的所有取值：
 
 4. 迭代/递归：使用迭代（自底向上）或者递归（自顶向下）方式确定写代码思路；
 
-   <img src="C:\Users\Wby\Desktop\coinchange1.png" style="zoom:70%;" />
+   <img src="https://github.com/HolaAmigoV5/Images/raw/master/coinchange1.png" style="zoom:70%;" />
 
 5. 剪枝：对于重复进行删除。通过**备忘录**或者**dp数组**消除重复。
 
@@ -62,7 +62,7 @@ for 状态1 in 状态1的所有取值：
 
 4. **明确 `dp`函数/数组的定义：**递归解题时需要一个递归的dp函数，一般来说函数的参数就是状态转移中会变化的量，也就是上面说到的「选择」；函数的返回值就是题目要求我们计算的量。就凑领钱来说，**`dp(n)`的定义：输入一个目标金额`n`，返回凑出目标金额`n`的最少硬币数量**。迭代解题时需要明确dp数组的定义，把「状态」也就是目标金额作为变量，不过`dp函数`体现在函数参数，而`dp数组`体现在数组索引。就凑领钱来说，**dp数组的定义：当目标金额为i时，至少需要dp[i]枚硬币凑出**。
 
-   <img src="C:\Users\Wby\Desktop\coinchange.png" alt="coinchange" style="zoom:70%;" />
+   <img src="https://github.com/HolaAmigoV5/Images/raw/master/coinchange.png" alt="coinchange" style="zoom:70%;" />
 
    **凑硬币解法：**
 
