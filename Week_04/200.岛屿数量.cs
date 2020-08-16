@@ -28,11 +28,11 @@ public class Solution {
         // }
 
         //BFS. O(mn), O(mn)
+        Queue<int[]> queue=new Queue<int[]>();
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
                 if(grid[i][j]=='1'){
                     count++;
-                    Queue<int[]> queue=new Queue<int[]>();
                     queue.Enqueue(new int[]{i,j});
                     while(queue.Any()){
                         var p=queue.Dequeue();

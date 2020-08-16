@@ -26,6 +26,8 @@ public class Solution {
         {
             //E to B 
             board[x][y] = 'B';
+
+             //count the number of mines in eight directions
             int count = Judge(board, x, y);
             if (count == 0)
             {

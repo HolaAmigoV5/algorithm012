@@ -11,6 +11,7 @@ public class Solution
     string end = string.Empty;
     string begin = string.Empty;
     HashSet<string> wordSet = null;
+    Dictionary<string, List<string>> nodeNeighbors = new Dictionary<string, List<string>>();
 
     public IList<IList<string>> FindLadders(string beginWord, string endWord, IList<string> wordList)
     {
@@ -18,17 +19,17 @@ public class Solution
         if (wordSet.Count == 0 || !wordSet.Contains(endWord))
             return res;
 
-        var nodeNeighbors = new Dictionary<string, List<string>>();
-        var path = new List<string>();
+        wordSet.Remove(begin);
         begin = beginWord;
         end = endWord;
 
-        BFS(nodeNeighbors);
-        DFS(begin, nodeNeighbors, path);
+        if(!BFS()) 
+            return res;
+        DFS(begin, new List<string>());
         return res;
     }
 
-    private void BFS(Dictionary<string, List<string>> nodeNeighbors)
+    private bool BFS()
     {
         var queue = new Queue<string>();
         queue.Enqueue(begin);
@@ -39,8 +40,9 @@ public class Solution
 
         while (queue.Any())
         {
-            foreach (var item in toVisited)
-                visited.Add(item);
+            // foreach (var item in toVisited)
+            //     visited.Add(item);
+            visited.UnionWith(toVisited);
             toVisited.Clear();
 
             int size = queue.Count;
@@ -49,7 +51,7 @@ public class Solution
                 var cur = queue.Dequeue();
                 if (cur.Equals(end))
                     isFound = true;
-                var neighbors = GetNeighbors(cur, wordSet);
+                var neighbors = GetNeighbors(cur);
                 foreach (var neighbor in neighbors)
                 {
                     if (!visited.Contains(neighbor))
@@ -69,11 +71,11 @@ public class Solution
             if (isFound)
                 break;
         }
+        return isFound;
     }
 
     //DFS:output all paths with the shortest distance
-    private void DFS(string cur, Dictionary<string, List<string>> nodeNeighbors,
-    List<string> path)
+    private void DFS(string cur, List<string> path)
     {
         path.Add(cur);
         if (end.Equals(cur))
@@ -81,14 +83,16 @@ public class Solution
         else if (nodeNeighbors.ContainsKey(cur))
         {
             foreach (var next in nodeNeighbors[cur])
-                DFS(next, nodeNeighbors, path);
+                DFS(next, path);
         }
         path.RemoveAt(path.Count - 1);
     }
 
-    private List<string> GetNeighbors(string str, HashSet<string> wordSet)
+    private List<string> GetNeighbors(string str)
     {
         var ans = new List<string>();
+        if(string.IsNullOrEmpty(str))
+            return ans;
         char[] chars = str.ToCharArray();
         for (int i = 0; i < str.Length; i++)
         {

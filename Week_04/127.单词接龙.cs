@@ -55,7 +55,7 @@ public class Solution {
         var visited=new HashSet<string>();
 
         int step=0;
-        while(beginVisited.Any() && endVisited.Any()){
+        while(beginVisited.Any()){
             step++;
             //choose the smallest one
             if(beginVisited.Count>endVisited.Count){
