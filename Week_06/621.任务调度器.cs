@@ -7,6 +7,7 @@
 // @lc code=start
 public class Solution {
     public int LeastInterval(char[] tasks, int n) {
+        //贪心
         if(tasks.Length<=0 || n<1)
             return tasks.Length;
         int[] counts=new int[26];

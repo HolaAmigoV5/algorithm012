@@ -47,12 +47,14 @@ public class Solution {
         // }
         // return 0;
 
-        //double points BFS
+        //two-ended BFS
         var beginVisited=new HashSet<string>();
         beginVisited.Add(beginWord);
         var endVisited=new HashSet<string>();
         endVisited.Add(endWord);
         var visited=new HashSet<string>();
+        visited.Add(beginWord);
+        visited.Add(endWord);
 
         int step=0;
         while(beginVisited.Any()){
@@ -72,11 +74,12 @@ public class Solution {
                     if(endVisited.Contains(neighbor))
                         return step+1;
                     if(!visited.Contains(neighbor)){
-                        visited.Add(neighbor);
+                        //visited.Add(neighbor);
                         nextLevelVisited.Add(neighbor);
                     }
                 }
                 beginVisited=nextLevelVisited;
+                visited.UnionWith(nextLevelVisited);
             }
         }
         return 0;

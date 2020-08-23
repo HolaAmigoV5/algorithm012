@@ -6,32 +6,43 @@
 
 // @lc code=start
 public class Solution {
+    int count=0;
     public int CountSubstrings(string s) {
-        if(string .IsNullOrEmpty(s))
+        if(s==null || s.Length==0)
             return 0;
-        
-        int n=s.Length;
-        bool[,] dp=new bool[n,n];
-        int result=s.Length;
-        for(int i=0; i<n; i++)
-            dp[i,i]=true;
+       //dp
+        // int n=s.Length;
+        // //bool[,] dp=new bool[n,n];
+        // bool[] dp=new bool[n];
+        // for(int j=0; j<n; j++){
+        //     for(int i=0; i<=j; i++){
+        //         // if(s[i]==s[j])
+        //         //     if(dp[i,j]=i==j || j-i==1 || dp[i+1,j-1])
+        //         //         count++;
 
-        for(int i=n-1; i>=0; i--){
-            for(int j=i+1; j<n; j++){
-                if(s[i]==s[j])
-                {
-                    if(j-i==1)
-                        dp[i,j]=true;
-                    else
-                        dp[i,j]=dp[i+1,j-1];
-                }
-                else
-                    dp[i,j]=false;
-                if(dp[i,j])
-                    result++;
-            }
+        //         if(s[i]==s[j] && (j-i<=1 || dp[i+1])){
+        //             count++;
+        //             dp[i]=true;
+        //         }
+        //         else
+        //             dp[i]=false;
+                    
+        //     }
+        // }
+        // return count;
+
+        for(int i=0; i<s.Length; i++){
+            ExtendPalindrome(s,i,i);
+            ExtendPalindrome(s,i,i+1);
         }
-        return result;
+        return count;
+    }
+    private void ExtendPalindrome(string s, int left, int right){
+        while(left>=0 && right<s.Length && s[left]==s[right]){
+            count++;
+            left--;
+            right++;
+        }
     }
 }
 // @lc code=end

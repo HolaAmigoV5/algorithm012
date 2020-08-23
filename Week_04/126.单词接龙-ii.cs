@@ -19,14 +19,66 @@ public class Solution
         if (wordSet.Count == 0 || !wordSet.Contains(endWord))
             return res;
 
-        wordSet.Remove(begin);
+        //wordSet.Remove(begin);
         begin = beginWord;
         end = endWord;
 
-        if(!BFS()) 
+        // if(!BFS()) 
+        //     return res;
+        if(!TwoEndedBFS())
             return res;
         DFS(begin, new List<string>());
         return res;
+    }
+
+    private bool TwoEndedBFS(){
+        var beginVisited=new HashSet<string>(){begin};
+        var endVisited=new HashSet<string>(){end};
+        var visited=new HashSet<string>();
+        visited.Add(begin);
+        visited.Add(end);
+
+        bool isFound=false;
+        bool IsSwop=false;
+        while(beginVisited.Any()){
+            //swop
+            if(beginVisited.Count>endVisited.Count){
+                var tmp=beginVisited;
+                beginVisited=endVisited;
+                endVisited=tmp;
+                IsSwop=!IsSwop;
+            }
+            var nextVisited=new HashSet<string>();
+            foreach(var str in beginVisited){
+                var neighbors=GetNeighbors(str);
+                foreach(var n in neighbors){
+                    if(endVisited.Contains(n)){
+                        isFound=true;
+                        AddToSuccessors(IsSwop, str, n);
+                    }
+                    if(!visited.Contains(n)){
+                        nextVisited.Add(n);
+                        AddToSuccessors(IsSwop, str, n);
+                    }
+                }
+            }
+            beginVisited=nextVisited;
+            visited.UnionWith(nextVisited);
+            if(isFound)
+                break;
+        }
+        return isFound;
+    }
+
+    private void AddToSuccessors(bool IsSwop, string cur, string next){
+        if(IsSwop){
+            var tmp=cur;
+            cur=next;
+            next=tmp;
+        }
+        if(!nodeNeighbors.ContainsKey(cur))
+            nodeNeighbors[cur]=new List<string>();
+        nodeNeighbors[cur].Add(next);
     }
 
     private bool BFS()
