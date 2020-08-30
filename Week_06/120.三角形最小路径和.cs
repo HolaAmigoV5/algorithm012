@@ -7,6 +7,7 @@
 // @lc code=start
 public class Solution {
     public int MinimumTotal(IList<IList<int>> triangle) {
+        //O(n^2) O(n)
         int n=triangle.Count();
         int[] dp=new int[n+1];
         for(int i=n-1; i>=0; i--){

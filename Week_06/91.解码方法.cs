@@ -7,26 +7,44 @@
 // @lc code=start
 public class Solution {
     public int NumDecodings(string s) {
-        if(s[0]=='0')
+        if(string.IsNullOrEmpty(s))
             return 0;
-        char[] charArray=s.ToCharArray();
-        int last_2=1, last_1=1;
-        for(int i=1;i<s.Length; i++){
-            int temp=last_1;
-            if(charArray[i]=='0'){
-                if(charArray[i-1]=='1' || charArray[i-1]=='2')
-                    temp=last_2;
-                else
-                    return 0;
-            }
-            else if(charArray[i-1]=='1' || 
-            (charArray[i-1] == '2' && charArray[i] - '0'>0 && charArray[i] - '0'<7))
-                temp+=last_2;
+
+        // if(s[0]=='0')
+        //     return 0;
+
+        // int pre=1, cur=1;
+        // for(int i=1;i<s.Length; i++){
+        //     int temp=cur;
+        //     if(s[i]=='0'){
+        //         if(s[i-1]=='1' || s[i-1]=='2')
+        //             temp=pre;
+        //         else
+        //             return 0;
+        //     }
+        //     else if(s[i-1]=='1' || (s[i-1] == '2' && s[i]>='1' && s[i]<='6'))
+        //         temp+=pre;
             
-            last_2=last_1;
-            last_1=temp;
+        //     pre=cur;
+        //     cur=temp;
+        // }
+        // return cur;
+
+        //like climb stairs, we can decode one char or two chars, then add them.
+        int len=s.Length;
+        int[] dp=new int[len+1];
+        //base case
+        dp[0]=1; // to get the right dp[2], let's dp[0]=1
+        dp[1]=s[0]=='0'?0:1;
+        for(int i=2; i<=len; i++){
+            int first=int.Parse(s.Substring(i-1,1));
+            int second=int.Parse(s.Substring(i-2,2));
+            if(first!=0)
+                dp[i]+=dp[i-1];
+            if(second>=10 && second <=26)
+                dp[i]+=dp[i-2];
         }
-        return last_1;
+        return dp[len];
     }
 }
 // @lc code=end

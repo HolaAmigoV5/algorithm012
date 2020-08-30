@@ -9,6 +9,8 @@ public class Solution {
     public int MinDistance(string word1, string word2) {
         //O(mn), O(mn)
         int m =word1.Length, n=word2.Length;
+        if(m*n==0) return m+n;
+        //dp[i][j] 代表 word1到 i位置转换成 word2到j位置需要最少步数
         int[,] dp=new int[m+1,n+1];
 
         //base case
@@ -23,7 +25,7 @@ public class Solution {
                 if(word1[i-1]==word2[j-1])
                     dp[i,j]=dp[i-1,j-1];
                 else{
-                    dp[i,j]=Math.Min(dp[i-1, j]+1, Math.Min( dp[i,j-1]+1, dp[i-1,j-1]+1));
+                    dp[i,j]=Math.Min(Math.Min(dp[i-1,j], dp[i,j-1]), dp[i-1,j-1])+1;
                 }
             }
         }

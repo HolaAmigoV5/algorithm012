@@ -18,40 +18,13 @@ public class Solution {
     public int Rob(TreeNode root) {
         if(root==null)
             return 0;
-            
-        //brute force
-        // int money=root.val;
-        // if(root.left!=null)
-        //     money+=(Rob(root.left.left)+Rob(root.left.right));
-        
-        // if(root.right!=null)
-        //     money+=(Rob(root.right.left)+Rob(root.right.right));
 
-        // return Math.Max(money, Rob(root.left)+Rob(root.right));
+        /*任何一个节点能偷到的最大钱的状态可以定义为：
+        当前节点不偷：MaxMoney = 左孩子能偷到的钱 + 右孩子能偷到的钱
+        当前节点偷：MaxMoney = 左孩子自己不偷时能得到的钱 + 右孩子不偷时能得到的钱 + 当前节点的钱数*/
 
-        //use dic
-        // var memo=new Dictionary<TreeNode, int> ();
-        // return RobInternal(root, memo);
-
-        //use Array
         int[] result=RobInternal(root);
-        return Math.Max(result[0], result[1]);
-    }
-
-    private int RobInternal(TreeNode root, Dictionary<TreeNode, int> memo){
-        if(root==null)
-            return 0;
-        if(memo.ContainsKey(root))
-            return memo[root];
-        int money=root.val;
-        if(root.left!=null)
-            money+=(RobInternal(root.left.left, memo)+RobInternal(root.left.right, memo));
-        if(root.right!=null)
-            money+=(RobInternal(root.right.left, memo)+RobInternal(root.right.right, memo));
-
-        int result=Math.Max(money, RobInternal(root.left, memo)+RobInternal(root.right, memo));
-        memo[root]=result;
-        return result;
+        return Math.Max(result[0], result[1]);  //0 means no robbery, 1 means robbery
     }
 
     private int[] RobInternal(TreeNode root){

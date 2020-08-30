@@ -46,12 +46,12 @@ public class Solution {
 
         //dp2
         int pre=nums[0];
-        int res=pre;
+        int max=pre;
         for(int i=1; i<nums.Length; i++){
             pre=Math.Max(nums[i],pre+nums[i]);
-            res=Math.Max(res,pre);
+            max=Math.Max(max,pre);
         }
-        return res;
+        return max;
 
         //divide and conquer. O(nlogn), o(1)
         //return MaxSubArray(nums,0,nums.Length-1);

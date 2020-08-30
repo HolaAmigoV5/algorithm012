@@ -7,26 +7,28 @@
 // @lc code=start
 public class Solution {
     public int MaxProfit(int[] prices) {
-        if(prices==null || prices.Length==0)
-            return 0;
+        int len=prices.Length;
+        if(len<2) return 0;
         
-        // int len=prices.Length;
-        // int dp_i_0=0, dp_i_1=int.MinValue;
-        // for(int i=0; i<len;i++){
-        //     int temp=dp_i_0;
-        //     dp_i_0=Math.Max(dp_i_0, dp_i_1+prices[i]);
-        //     dp_i_1=Math.Max(dp_i_1, temp-prices[i]);
-        // }
-        // return dp_i_0;
-
         //greedy
         // int profit=0;
-        // for(int i=1; i<prices.Length; i++)
-        //     profit+=Math.Max(0,prices[i]-prices[i-1]);
+        // for(int i=1; i<len; i++)
+        //     profit+=Math.Max(0, prices[i]-prices[i-1]);
         // return profit;
 
+        //dp
+        // int[,] dp=new int[len,2];
+        // dp[0,0]=0;
+        // dp[0,1]=-prices[0];
+        // for(int i=1; i<len; i++){
+        //     dp[i,0]=Math.Max(dp[i-1,0], dp[i-1,1]+prices[i]);
+        //     dp[i,1]=Math.Max(dp[i-1,1], dp[i-1,0]-prices[i]);
+        // }
+        // return dp[len-1,0];
+
+        //dp2: compression space
         int dp_i0=0, dp_i1=-prices[0];
-        for(int i=0; i<m; i++){
+        for(int i=1; i<len; i++){
             dp_i0=Math.Max(dp_i0, dp_i1+prices[i]);
             dp_i1=Math.Max(dp_i1, dp_i0-prices[i]);
         }
