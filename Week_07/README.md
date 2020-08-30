@@ -2,7 +2,7 @@
 
 ### 字典树
 
-​	字典树， 即Trie树，又称单词查找树或键树，是一种树形结构。典型应用是用于统计和排序大量的字符串（但不限于字符串），所以经常被搜索引擎系统应用于文本词频统计。它的优点是最大限度地减少无谓的字符串比较，查询效率比哈希表高。字典树的核心思想是空间换时间。利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。
+ ​	 字典树， 即Trie树，又称单词查找树或键树，是一种树形结构。典型应用是用于统计和排序大量的字符串（但不限于字符串），所以经常被搜索引擎系统应用于文本词频统计。它的优点是最大限度地减少无谓的字符串比较，查询效率比哈希表高。字典树的核心思想是空间换时间。利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。
 
 基本性质：
 
@@ -12,7 +12,7 @@
 
 ### 并查集
 
-​	并查集（Disjoint Set），用于处理组团和配对问题。
+ ​	 并查集（Disjoint Set），用于处理组团和配对问题。
 
 基本操作
 
@@ -24,11 +24,11 @@
 
 #### 剪枝
 
-​	去掉重复的分支，通过缓存或者预先判断的方式实现。
+ ​	去掉重复的分支，通过缓存或者预先判断的方式实现。
 
 #### 双端BFS
 
-​	BFS的扩展，从两端开始搜索，中间相遇。
+ ​	BFS的扩展，从两端开始搜索，中间相遇。
 
 代码模板：
 
@@ -81,7 +81,7 @@
 
 #### 启发式搜索
 
-​	启发式搜索（Heuristic Search），又称A*算法。启发式函数，又称估价函数，h(n)用来评价哪些结点最有希望的是一个我们要找的节点，h(n)会返回一个非负实数，也可以认为是从结点n的目标结点路径的估计成本。启发式函数是一种告知搜索方向的方法。它提供了一种明智的方法来猜测哪个邻居结点会导向下一个目标。
+ ​	 启发式搜索（Heuristic Search），又称A*算法。启发式函数，又称估价函数，h(n)用来评价哪些结点最有希望的是一个我们要找的节点，h(n)会返回一个非负实数，也可以认为是从结点n的目标结点路径的估计成本。启发式函数是一种告知搜索方向的方法。它提供了一种明智的方法来猜测哪个邻居结点会导向下一个目标。
 
 ### AVL树和红黑树
 
@@ -95,7 +95,7 @@
 
 #### 红黑树
 
-​	红黑树（Red-black Tree）,是一种**近似平衡的二叉搜索树(Binary Search Tree)**，它能够确保任何一个结点的左右子树的**高度差小于两倍**。具体来说，红黑树是满足如下条件的二叉搜索树：
+ ​	红黑树（Red-black Tree）,是一种**近似平衡的二叉搜索树(Binary Search Tree)**，它能够确保任何一个结点的左右子树的**高度差小于两倍**。具体来说，红黑树是满足如下条件的二叉搜索树：
 
 1. 每个结点要么是红色，要么是黑色
 
@@ -106,11 +106,11 @@
 
 #### 对比(重点)
 
-   1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
-       - AVL树查询更快，因为是严格平衡树
-   2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
-       - 红黑树插入和删除更快，因为不用频繁进行旋转操作
-   3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
-       - AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
-   4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
-       - 红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中使用。
+1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
+    - AVL树查询更快，因为是严格平衡树
+2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
+    - 红黑树插入和删除更快，因为不用频繁进行旋转操作
+3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
+    - AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
+4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
+    - 红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中使用。
