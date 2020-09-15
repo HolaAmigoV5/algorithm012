@@ -350,7 +350,7 @@ private void BFS(Node node) {
 
 **数组的二分查找：① 数组单调递增或递减少 ②数组nums[left]<=nums[mid]或者nums[mid]<nums[right]，当nums[mid]=nums[right]时，仅当数组只有一个元素，此时left=mid=right=0**
 
-**注意越界：**当两个int数字无限接近Int.MaxValue时，两个int数`相加`或者`相乘`时肯定越界，此时可以将int数转变为long或者double类型，然后继续后面操作即可。
+**注意越界：** 当两个int数字无限接近Int.MaxValue时，两个int数`相加`或者`相乘`时肯定越界，此时可以将int数转变为long或者double类型，然后继续后面操作即可。
 
 二分查找的前提：① 目标函数单调性 ② 存在上下界(bounded) ③ 能够通过索引访问(index accessible)。代码模板如下：
 
@@ -725,14 +725,14 @@ Class UnionFind{
 
 #### 对比(重点)
 
-   	1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
-       - AVL树查询更快，因为是严格平衡树
-            	2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
-       - 红黑树插入和删除更快，因为不用频繁进行旋转操作
-            	3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
-       - AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
-            	4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
-       - 红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中。
+1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
+    - AVL树查询更快，因为是严格平衡树
+2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
+    - 红黑树插入和删除更快，因为不用频繁进行旋转操作
+3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
+    - AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
+4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
+    - 红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中使用。
 
 ## 第八周
 
