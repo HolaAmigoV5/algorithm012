@@ -45,11 +45,11 @@ public class Solution {
         // return max;
 
         //dp2
-        int pre=nums[0];
-        int max=pre;
-        for(int i=1; i<nums.Length; i++){
-            pre=Math.Max(nums[i],pre+nums[i]);
-            max=Math.Max(max,pre);
+        int pre=0;
+        int max=nums[0];
+        foreach(var num in nums){
+            pre=Math.Max(num, pre+num);
+            max=Math.Max(max, pre);
         }
         return max;
 
