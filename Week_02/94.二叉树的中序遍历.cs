@@ -31,19 +31,34 @@ public class Solution {
         while (root != null || stack.Any())
         {
             //All the left nodes push into the stack.
-            if (root != null)
+            while (root != null)
             {
                 stack.Push(root);
                 root = root.left;
             }
-            else
-            {
-                var temp = stack.Pop();
-                list.Add(temp.val);
-                root = temp.right;
-            }
+            var temp = stack.Pop();
+            list.Add(temp.val);
+            root = temp.right;
         }
         return list;
+
+        //M3:Iteartion, right-root-left
+        // var stack=new Stack<TreeNode>();
+        // stack.Push(root);
+        // while(stack.Any()){
+        //     var node=stack.Pop();
+        //     if(node!=null){
+        //         if(node.right!=null)
+        //             stack.Push(node.right);
+        //         stack.Push(node);
+        //         stack.Push(null);
+        //         if(node.left!=null)
+        //             stack.Push(node.left);
+        //     }
+        //     else
+        //         list.Add(stack.Pop().val);
+        // }
+        // return list;
     }
 }
 // @lc code=end

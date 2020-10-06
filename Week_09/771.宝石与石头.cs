@@ -11,17 +11,10 @@ public class Solution {
             return 0;
 
         int count=0;
-        //M1
-        // foreach(var ch in S){
-        //     if(J.IndexOf(ch)>=0)
-        //         count++;
-        // }
-        // return count;
-
-        //M2
-        var chars=S.ToCharArray();
-        foreach(char c in chars){
-            if(J.Contains(c))
+        foreach(var ch in S){
+            // if(J.IndexOf(ch)>=0)
+            //     count++;
+            if(J.Contains(ch))
                 count++;
         }
         return count;

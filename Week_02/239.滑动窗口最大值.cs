@@ -8,10 +8,11 @@
 public class Solution {
     public int[] MaxSlidingWindow(int[] nums, int k) {
         //Verification
-        if(nums==null || nums.Length*k==0) return new int[0];
+        if(nums==null || nums.Length*k==0) 
+            return new int[0];
         if(k==1) return nums;
 
-        //Violence O(nk), O(n)
+        //brute force O(nk), O(n)
         // int len=nums.Length;
         // int[] res=new int[len-k+1];
         // for(int i=0; i<res.Length; i++){
@@ -43,19 +44,20 @@ public class Solution {
         int count=nums.Length-k+1;
         int[] res=new int[count];
         LinkedList<int> queue=new LinkedList<int>();
-        for(int i=1-k, j=0; j<nums.Length; i++,j++){
-            //Push
-            while(queue.Any() && queue.Last()<nums[j])
-                queue.RemoveLast();
-            queue.AddLast(nums[j]);
 
-            //Pop
-            if(i>0 && queue.First()==nums[i-1])
+        for(int i=0; i<nums.Length; i++){
+            //Remove numbers out of range k
+            if(queue.Any() && queue.First.Value<i-k+1)
                 queue.RemoveFirst();
+            
+            //remove smaller numbers in k range as they are useless
+            while(queue.Any() && nums[queue.Last.Value]<nums[i])
+                queue.RemoveLast();
 
-            //Max
-            if(i>=0)
-                res[i]=queue.First();
+            //q contains index ... ans contains content
+            queue.AddLast(i);
+            if(i-k+1>=0)
+                res[i-k+1]=nums[queue.First()];
         }
         return res;
     }

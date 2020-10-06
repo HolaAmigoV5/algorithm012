@@ -11,36 +11,22 @@ public class Solution {
         if(string.IsNullOrEmpty(str.Trim()))
             return 0;
 
-        // var chars=str.ToCharArray();
-        // int n=chars.Length;
-        // int idx=0;
-        // while(idx<n && chars[idx]==' ')
-        //     idx++; //去掉前导空格
-        // if(idx==n)
-        //     return 0; //去掉前导空格后到末尾了
+        int sign=1, ans=0, i=0;
+        while(str[i]==' ') //忽略空格
+            i++;
+        if(str[i]=='-' || str[i]=='+') //处理正负号
+            sign=str[i++]=='-'?-1:1;
+        
+        while(i<str.Length && str[i]>='0' && str[i]<='9'){
+             //处理数字，注意数字越界时返回int.MaxValue或 int.MinValue
+             //int.MaxValue=2147483647, 最后一位是7
+             //int.MinValue=-2147483648，最后一位是8
+             if(ans>int.MaxValue/10 || (ans==int.MaxValue/10 && str[i]>'7'))
+                return (sign==1)?int.MaxValue:int.MinValue;
+            ans=10*ans+(str[i++]-'0');
+        }
+        return ans*sign;
 
-        // bool negative=false;
-        // if(chars[idx]=='-'){
-        //     negative=true;  //遇到负号
-        //     idx++;
-        // }
-        // else if(chars[idx]=='+')
-        //     idx++;
-        // else if(!char.IsDigit(chars[idx]))
-        //     return 0; //非数字
-
-        // int ans=0;
-        // while(idx<n && char.IsDigit(chars[idx])){
-        //     int digit=chars[idx]-'0';
-        //     if(ans>(int.MaxValue-digit)/10){
-        //         // 本来应该是 ans * 10 + digit > Integer.MAX_VALUE
-        //         // 但是 *10 和 + digit 都有可能越界，所有都移动到右边去就可以了。
-        //         return negative?int.MinValue:int.MaxValue;
-        //     }
-        //     ans=ans*10+digit;
-        //     idx++;
-        // }
-        // return negative?-ans:ans;
 
         //Regex
         /* 
@@ -50,16 +36,16 @@ public class Solution {
             \d 表示一个数字 0 - 9 范围
             + 表示前面一个字符出现一次或者多次，\\d+ 合一起就能匹配一连串数字了
         */
-        int ans=0;
-        str=str.Trim();
-        Match match=Regex.Match(str, @"^[\+\-]?\d+");
-        if(match.Success){
-            if(int.TryParse(match.Value, out ans))
-                return ans;
-            else
-                ans=str[0]=='-'?int.MinValue:int.MaxValue;
-        }
-        return ans;
+        // int ans=0;
+        // str=str.Trim();
+        // Match match=Regex.Match(str, @"^[\+\-]?\d+");
+        // if(match.Success){
+        //     if(int.TryParse(match.Value, out ans))
+        //         return ans;
+        //     else
+        //         ans=str[0]=='-'?int.MinValue:int.MaxValue;
+        // }
+        // return ans;
     }
 }
 // @lc code=end

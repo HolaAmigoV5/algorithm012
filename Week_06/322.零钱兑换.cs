@@ -21,11 +21,41 @@ public class Solution {
         // }
         // return (dp[amount]==amount+1)?-1:dp[amount];
 
+        //bfs
+        if(amount==0) return 0;
+        
+        int count=0;
+        var visited=new HashSet<int>();
+        var queue=new Queue<int>();
+        queue.Enqueue(amount);
+
+        while(queue.Any()){
+            var size=queue.Count;
+            count++;
+            while(size-->0){
+                var num=queue.Dequeue();
+                for(int i=0; i<coins.Length; i++){
+                    if(coins[i]<=num){
+                        var next=num-coins[i];
+                        if(next==0)
+                            return count;
+                        if(!visited.Contains(next)){
+                            visited.Add(next);
+                            queue.Enqueue(next);
+                        }
+                    }
+                   
+                }
+            }
+        }
+        return -1;
+
+
         //Greedy
-        Array.Sort(coins);
-        int res=amount+1;
-        CoinChangeHelper(coins.Length-1, coins, 0, amount, ref res);
-        return res==amount+1?-1:res;
+        // Array.Sort(coins);
+        // int res=amount+1;
+        // CoinChangeHelper(coins.Length-1, coins, 0, amount, ref res);
+        // return res==amount+1?-1:res;
     }
 
     private void CoinChangeHelper(int index, int[] coins, int count, int needAmount, ref int ans){

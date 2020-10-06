@@ -11,16 +11,29 @@ public class Solution {
             return 0;
         //return s.Trim().Split(' ').Last().Length;
 
-        int end=s.Length-1;
-        while(end>=0 && s[end]==' ')
-            end--;
-        if(end<0) return 0;
+        // int end=s.Length-1;
+        // while(end>=0 && s[end]==' ')
+        //     end--;
+        // if(end<0) return 0;
 
-        int start=end;
-        while(start>=0 && s[start]!=' ')
-            start--;
+        // int start=end;
+        // while(start>=0 && s[start]!=' ')
+        //     start--;
         
-        return end-start;
+        // return end-start;
+
+        //M2
+        s=s.Trim();
+        int count=0, len=s.Length;
+        if(len>0){
+            while(len-->0){
+                if(s[len]!=' ')
+                    count++;
+                else
+                    return count;
+            }
+        }
+        return count;
     }
 }
 // @lc code=end

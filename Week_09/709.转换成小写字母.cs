@@ -14,8 +14,7 @@ public class Solution {
 
         for(int i=0; i<len; i++){
             if(sb[i]>='A' && sb[i]<='Z'){
-                //sb[i]=(char)(sb[i]+('a'-'A'));
-                sb[i]=(char)(sb[i]+32);
+                sb[i]=(char)(sb[i]+('a'-'A'));
             }
                 
         }

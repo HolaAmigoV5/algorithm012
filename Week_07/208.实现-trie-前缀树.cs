@@ -47,14 +47,17 @@ public class Trie {
         // }
         // return node.IsEnd;
 
-        Trie node=this;
-        foreach(var ch in word){
-            int index=ch-'a';
-            node=node.next[index];
-            if(node==null)
-                return false;
-        }
-        return node.isEnd;
+        // Trie node=this;
+        // foreach(var ch in word){
+        //     int index=ch-'a';
+        //     node=node.next[index];
+        //     if(node==null)
+        //         return false;
+        // }
+        // return node.isEnd;
+
+        var node=SearchWord(word);
+        return node!=null && node.isEnd;
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
@@ -67,15 +70,29 @@ public class Trie {
         // }
         // return true;
 
-        Trie node=this;
-        foreach (var ch in prefix)
+        // Trie node=this;
+        // foreach (var ch in prefix)
+        // {
+        //     int index=ch-'a';
+        //     node=node.next[index];
+        //     if(node==null)
+        //         return false;
+        // }
+        // return true;
+
+        return SearchWord(prefix)!=null;
+    }
+
+    private Trie SearchWord(string word){
+        var node=this;
+        foreach (var ch in word)
         {
-            int index=ch-'a';
+            var index=ch-'a';
             node=node.next[index];
             if(node==null)
-                return false;
+                return null;
         }
-        return true;
+        return node;
     }
 
     class TrieNode{
